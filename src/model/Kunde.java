@@ -7,6 +7,12 @@ public class Kunde {
     private String mobil;
     private ArrayList<Bestilling> bestillinger = new ArrayList<>();
 
+    public Kunde(String navn, String mobil) {
+        this.navn = navn;
+        this.mobil = mobil;
+
+    }
+
     public String getNavn() {
         return navn;
     }

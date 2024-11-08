@@ -6,11 +6,11 @@ public class Plads {
     private int pris;
     private PladsType pladsType;
 
-    public Plads(int nr, int raekke, PladsType pladsType, int pris) {
-        this.nr = nr;
+    public Plads(int raekke, int nr, int pris, PladsType pladsType) {
         this.raekke = raekke;
-        this.pladsType = pladsType;
+        this.nr = nr;
         this.pris = pris;
+        this.pladsType = pladsType;
     }
 
     public int getRaekke() {
