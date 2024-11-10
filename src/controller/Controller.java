@@ -15,6 +15,7 @@ public class Controller {
      * @param navn for forestilling
      * @param startDato for forestillings begyndelse
      * @param slutDato for forestillings ophør
+     * @return Et nyt Forestilling-objekt tilføjet til lager
      */
     public static Forestilling createForestilling(String navn, LocalDate startDato, LocalDate slutDato) {
         Forestilling forestilling = new Forestilling(navn, startDato, slutDato);

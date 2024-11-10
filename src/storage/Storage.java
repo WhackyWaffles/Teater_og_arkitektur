@@ -33,17 +33,17 @@ public class Storage {
         return new ArrayList<>(bestillinger);
     }
 
-    public static void addEmployee(Bestilling bestilling) {
+    public static void addBestilling(Bestilling bestilling) {
         bestillinger.add(bestilling);
     }
 
-    public static void removeEmployee(Bestilling bestilling) {
+    public static void removeBestilling(Bestilling bestilling) {
         bestillinger.remove(bestilling);
     }
 
     // -------------------------------------------------------------------------
 
-    public static ArrayList<Plads> getPlads() {
+    public static ArrayList<Plads> getPladser() {
         return new ArrayList<>(pladser);
     }
 
@@ -53,7 +53,7 @@ public class Storage {
 
     // -------------------------------------------------------------------------
 
-    public static ArrayList<Kunde> getKunde() {
+    public static ArrayList<Kunde> getKunder() {
         return new ArrayList<>(kunder);
     }
 
