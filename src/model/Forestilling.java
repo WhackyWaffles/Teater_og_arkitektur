@@ -27,12 +27,11 @@ public class Forestilling {
         return slutDato;
     }
 
-    //Forestilling har komposition med Bestilling
+    // Forestilling har komposition med Bestilling
 
     public ArrayList<Bestilling> getBestillinger() {
         return bestillinger;
     }
-
 
     //    public Bestilling createBestilling(LocalDate fraDato) {
 //    }
