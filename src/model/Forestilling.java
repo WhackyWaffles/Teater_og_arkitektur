@@ -32,6 +32,8 @@ public class Forestilling {
     public ArrayList<Bestilling> getBestillinger() {
         return bestillinger;
     }
+
+
     //    public Bestilling createBestilling(LocalDate fraDato) {
 //    }
 
