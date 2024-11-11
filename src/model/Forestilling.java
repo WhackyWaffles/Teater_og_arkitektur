@@ -37,4 +37,22 @@ public class Forestilling {
     public String toString() {
         return navn + " (" + startDato + " : " + slutDato + ")";
     }
+
+    public boolean erPladsLedig(int række, int nr, LocalDate dato) {
+        boolean erPladsLedig = false;
+        for (Bestilling bestilling : bestillinger) {
+            if (dato == bestilling.getDato()) {
+                for (int i = 0; i < bestilling.getPladser().size(); i++) {
+                    if (række == bestilling.getPladser().get(i).getRaekke()) {
+                        if (nr == bestilling.getPladser().get(i).getNr()) {
+                            break;
+                        } else {
+                            erPladsLedig = true;
+                        }
+                    }
+                }
+            }
+        }
+        return erPladsLedig;
+    }
 }
