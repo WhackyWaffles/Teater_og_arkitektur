@@ -24,4 +24,11 @@ public class Kunde {
     public ArrayList<Bestilling> getBestillinger() {
         return bestillinger;
     }
+
+
+
+    @Override
+    public String toString() {
+        return navn + " (" + mobil + ")";
+    }
 }

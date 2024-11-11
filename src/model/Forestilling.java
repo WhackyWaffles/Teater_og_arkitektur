@@ -33,5 +33,8 @@ public class Forestilling {
         return bestillinger;
     }
 
-    //    public Bestilling createBestilling(LocalDate fraDato)
+    @Override
+    public String toString() {
+        return navn + " (" + startDato + " : " + slutDato + ")";
+    }
 }
