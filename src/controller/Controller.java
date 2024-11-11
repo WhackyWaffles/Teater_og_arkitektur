@@ -7,8 +7,11 @@ import model.PladsType;
 import storage.Storage;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Controller {
+
+    // -------------------------------------------------------------------------
 
     /**
      * Skaber en ny forestilling.<br />
@@ -24,6 +27,15 @@ public class Controller {
     }
 
     /**
+     * Getter for alle Forestillinger, der er gemt i Storage.
+     */
+    public static ArrayList<Forestilling> getForestillinger() {
+        return Storage.getForestillinger();
+    }
+
+    // -------------------------------------------------------------------------
+
+    /**
      * Skaber en ny kunde.<br />
      * @param navn for kunde
      * @param mobil for kunde
@@ -33,6 +45,15 @@ public class Controller {
         Storage.addKunde(kunde);
         return kunde;
     }
+
+    /**
+     * Getter for alle Kunder, der er gemt i Storage.
+     */
+    public static ArrayList<Kunde> getKunder() {
+        return Storage.getKunder();
+    }
+
+    // -------------------------------------------------------------------------
 
     /**
      * Skaber en ny plads.<br />
@@ -45,5 +66,12 @@ public class Controller {
         Plads plads = new Plads(række, nr, pris, pladsType);
         Storage.addPlads(plads);
         return plads;
+    }
+
+    /**
+     * Getter for alle Pladser, der er gemt i Storage.
+     */
+    public static ArrayList<Plads> getPladser(){
+        return Storage.getPladser();
     }
 }

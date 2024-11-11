@@ -3,6 +3,7 @@ package gui;
 import controller.Controller;
 import model.Forestilling;
 import model.Kunde;
+import model.Plads;
 import model.PladsType;
 
 import java.time.LocalDate;
@@ -11,7 +12,8 @@ import java.time.LocalDate;
 public class App {
     public static void main(String[] args) {
         initStorage();
-        Application.launch(BestillingsVindue.class);
+//        Application.launch(BestillingsVindue.class);
+        testPrint();
     }
 
     /**
@@ -26,42 +28,42 @@ public class App {
         Kunde peter = Controller.createKunde("Peter Jensen", "12345678");
         Kunde niels = Controller.createKunde("Niels Madsen", "12341234");
 
-        for (int række = 1; række < 15; række++) {
-            for (int plads = 1; plads <= 20; plads++) {
+        for (int række = 0; række <= 14; række++) {
+            for (int nr = 0; nr <= 19; nr++) {
                 int pris;
                 PladsType pladsType = PladsType.STANDARD;
 
 //                Gul zone
-                if (række <= 5 && plads >= 3 && plads <= 18) {
+                if (række <= 4 && nr >= 3 && nr <= 17) {
                     pris = 500;
                 }
 //                Grøn zone øverst venstre
-                else if (række <= 5 && plads <= 2) {
+                else if (række <= 4 && nr <= 1) {
                     pris = 450;
                 }
 //                Grøn zone øverst højre
-                else if (række <= 5 && plads >= 19) {
+                else if (række <= 4 && nr >= 18) {
                     pris = 450;
                 }
 //                Grøn zone midte, til og med række 9
-                else if (række >= 6 && række <= 9 && plads >= 3 && plads <= 18) {
+                else if (række >= 5 && række <= 8 && nr >= 2 && nr <= 17) {
                     pris = 450;
                 }
 //                Grøn zone midte, række 10, til venstre for kørestolspladser
-                else if (række == 10 && plads >= 3 && plads <= 7) {
+                else if (række == 9 && nr >= 2 && nr <= 6) {
                     pris = 450;
                 }
 //                Grøn zone midte, række 10, kørestolspladser
-                else if (række == 10 && plads >= 8 && plads <= 12) {
+                else if (række == 9 && nr >= 7 && nr <= 11) {
                     pris = 450;
                     pladsType = PladsType.KOERESTOL;
                 }
 //                Grøn zone midte, række 9 til højre for kørestolspladser
-                else if (række == 10 && plads >= 13 && plads <= 18) {
+                else if (række == 9 && nr >= 12 && nr <= 17) {
                     pris = 450;
                 }
 //                Blå zone, række 11, ekstra benpladser
-                else if (række == 11 && plads >= 8 && plads <= 12) {
+                else if (række == 10 && nr >= 7 && nr <= 11) {
                     pris = 400;
                     pladsType = PladsType.EKSTRABEN;
                 }
@@ -70,9 +72,44 @@ public class App {
                     pris = 400;
                 }
 //                Opret pladserne og reset pladstype
-                controller.Controller.createPlads(række, plads, pris, pladsType);
+                controller.Controller.createPlads(række, nr, pris, pladsType);
                 pladsType = PladsType.STANDARD;
             }
+        }
+    }
+
+    /**
+     * Metode for at udskrive alle Forestillinger, Kunder og Pladser
+     */
+    public static void testPrint() {
+        System.out.println("Forestillinger:");
+        for (Forestilling forestilling : Controller.getForestillinger()) {
+            System.out.println(
+                    forestilling.getNavn() +
+                    " spiller fra " +
+                    forestilling.getStartDato() +
+                    " til " +
+                    forestilling.getSlutDato());
+                    System.out.println();
+        }
+        System.out.println();
+        System.out.println("Registrerede kunder:");
+        for (Kunde kunde : Controller.getKunder()) {
+            System.out.println(
+                    kunde.getNavn() +
+                    " (" +
+                    kunde.getMobil() +
+                    ")");
+        }
+        System.out.println();
+        System.out.println("Pladser i salen (i alt " + Controller.getPladser().size() + "):");
+        for (int række = 0; række <= 14; række++) {
+            for (int nr = 0; nr <= 19; nr++) {
+                if (nr == 19) {
+                    System.out.printf("%1$5s", Controller.getPladser().get(nr + 20 * (række)).getNavn());
+                } else System.out.printf("%1$8s", Controller.getPladser().get(nr + 20 * (række)).getNavn() + " : ");
+            }
+            System.out.println();
         }
     }
 }

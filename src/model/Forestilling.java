@@ -33,7 +33,5 @@ public class Forestilling {
         return bestillinger;
     }
 
-    //    public Bestilling createBestilling(LocalDate fraDato) {
-//    }
-
+    //    public Bestilling createBestilling(LocalDate fraDato)
 }
