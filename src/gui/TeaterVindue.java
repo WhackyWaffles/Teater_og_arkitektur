@@ -10,6 +10,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import model.Forestilling;
 import model.Kunde;
+import model.Plads;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -18,11 +19,13 @@ public class TeaterVindue extends Application {
 
     private final ListView<Forestilling> forestillingListView = new ListView<>();
     private final ListView<Kunde> kundeListView = new ListView<>();
+    private final ListView<Plads> pladserListView = new ListView<>();
     private final TextField navneTextField = new TextField();
     private final TextField startDatoTextField = new TextField();
     private final TextField slutDatoTextField = new TextField();
     private final TextField kundeNavnTextField = new TextField();
     private final TextField kundeMobilTextField = new TextField();
+    private final TextField pladsTextField = new TextField();
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -42,16 +45,21 @@ public class TeaterVindue extends Application {
 
         Label lblForestillinger = new Label("Forestillinger");
         pane.add(lblForestillinger, 0, 0);
-        Label lblKunder = new Label("Kunder");
-        pane.add(lblKunder, 2, 0);
-
         pane.add(forestillingListView, 0, 1, 2, 1);
         forestillingListView.setPrefSize(200, 200);
         forestillingListView.getItems().setAll(Controller.getForestillinger());
 
+        Label lblKunder = new Label("Kunder");
+        pane.add(lblKunder, 2, 0);
         pane.add(kundeListView, 2, 1, 2, 1);
         kundeListView.setPrefSize(200, 200);
         kundeListView.getItems().setAll(Controller.getKunder());
+
+        Label lblPlads = new Label("Pladser");
+        pane.add(lblPlads,4,0);
+        pane.add(pladserListView,4,1,2,1);
+        pladserListView.setPrefSize(200,200);
+        pladserListView.getItems().setAll(Controller.getPladser());
 
         Label lblNavn = new Label("Navn");
         pane.add(lblNavn, 0, 2);
@@ -73,6 +81,10 @@ public class TeaterVindue extends Application {
         pane.add(lblKundeMobil, 2, 3);
         pane.add(kundeMobilTextField, 3, 3);
 
+        Label lblDato = new Label("Dato");
+        pane.add(lblDato,4,2);
+        pane.add(pladsTextField,5,2);
+
         Button btnAddForestilling = new Button("Opret forestilling");
         pane.add(btnAddForestilling, 1, 5);
         btnAddForestilling.setOnAction(event -> addForestillingAction());
@@ -80,6 +92,10 @@ public class TeaterVindue extends Application {
         Button btnAddKunde = new Button("Opret kunde");
         pane.add(btnAddKunde, 3, 5);
         btnAddKunde.setOnAction(event -> addKundeAction());
+
+        Button btnAddbestilling = new Button("Opret bestilling");
+        pane.add(btnAddbestilling,5,4);
+        btnAddbestilling.setOnAction(event -> addPladsAction());
     }
 
 //-------------------------------------------------------------------------------
@@ -106,6 +122,10 @@ public class TeaterVindue extends Application {
         }
         kundeNavnTextField.clear();
         kundeMobilTextField.clear();
+    }
+
+    private void addPladsAction() {
+
     }
 }
 

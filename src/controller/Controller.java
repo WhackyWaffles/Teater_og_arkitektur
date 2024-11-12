@@ -1,9 +1,6 @@
 package controller;
 
-import model.Forestilling;
-import model.Kunde;
-import model.Plads;
-import model.PladsType;
+import model.*;
 import storage.Storage;
 
 import java.time.LocalDate;
@@ -73,5 +70,11 @@ public class Controller {
      */
     public static ArrayList<Plads> getPladser(){
         return Storage.getPladser();
+    }
+    public static Bestilling opretBestillingMedPladser( Forestilling forestilling, Kunde kunde, LocalDate dato, ArrayList<Plads> pladser) {
+        for (Plads plads : pladser) {
+            
+        }
+        return null; 
     }
 }

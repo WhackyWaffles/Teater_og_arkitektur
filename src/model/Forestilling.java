@@ -27,24 +27,25 @@ public class Forestilling {
         return slutDato;
     }
 
+
     // Forestilling har komposition med Bestilling
 
     public ArrayList<Bestilling> getBestillinger() {
+
         return bestillinger;
     }
-
     @Override
     public String toString() {
-        return navn + " (" + startDato + " : " + slutDato + ")";
+        return navn + "(" + startDato + " : " + slutDato + ")";
     }
 
     public boolean erPladsLedig(int række, int nr, LocalDate dato) {
         boolean erPladsLedig = false;
         for (Bestilling bestilling : bestillinger) {
-            if (dato == bestilling.getDato()) {
+            if(dato==bestilling.getDato()) {
                 for (int i = 0; i < bestilling.getPladser().size(); i++) {
-                    if (række == bestilling.getPladser().get(i).getRaekke()) {
-                        if (nr == bestilling.getPladser().get(i).getNr()) {
+                    if(række == bestilling.getPladser().get(i).getRaekke()) {
+                        if(nr == bestilling.getPladser().get(i).getNr()) {
                             break;
                         } else {
                             erPladsLedig = true;
@@ -52,7 +53,9 @@ public class Forestilling {
                     }
                 }
             }
+
         }
         return erPladsLedig;
     }
+
 }
